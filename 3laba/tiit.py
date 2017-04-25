@@ -25,21 +25,22 @@ def _init():
 	return set(sa)
 
 
+def _boo(a):
+	i = 0
+	a = list(a)
+	while len(a) >= 0 and i < len(a):
+		k = list(a)
+		k.remove(a[i])
+		if k not in d:
+			d.append(k)
+		_boo(k)
+		i += 1
+		
+		
 def boolean(a = _init()):
+	global d
 	d = []
-	
-	def boo(a):
-		i = 0
-		a = list(a)
-		while len(a) >= 0 and i < len(a):
-			k = list(a)
-			k.remove(a[i])
-			if k not in d:
-				d.append(k)
-			boo(k)
-			i += 1
-	
-	boo(a)
+	_boo(a)
 	d.append(a)
 	d = [set(x) for x in d]
 	return "Boolean:", "{"+str(sorted(d))[1:len(str(d))-1]+"}"
