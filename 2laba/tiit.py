@@ -1,0 +1,1 @@
+def init():	file = list(open("01").read().split('\n'))	file = [list(map(int, x.split())) for x in file[:len(file) - 1]]		roads = file[1:]		return roadsdef united(roads):	pass
